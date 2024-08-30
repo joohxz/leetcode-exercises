@@ -24,5 +24,36 @@ namespace Program
                 return false;
             }
         }
+
+        //Roman to Integer
+        //Gives a string like "III" and returns the sum converting Roman Numbers
+        public int RomanToInt(string s)
+        {
+            Dictionary<char, int> dicionario = new Dictionary<char, int>{
+            {'I', 1},
+            {'V', 5},
+            {'X', 10},
+            {'L', 50},
+            {'C', 100},
+            {'D', 500},
+            {'M', 1000}
+        };
+            int sum = 0;
+            for (int i = 0; i < s.Length; i++)
+            {
+                int currentValue = dicionario[s[i]];
+                int nextValue = (i < (s.Length - 1)) ? dicionario[s[i + 1]] : 0;
+                if (currentValue < nextValue)
+                {
+                    sum -= currentValue;
+                }
+                else
+                {
+                    sum += currentValue;
+                }
+
+            }
+            return sum;
+        }
     }
 }
